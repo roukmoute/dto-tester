@@ -32,7 +32,7 @@ abstract class DtoTest extends TestCase
 
     public function testGettersAndSetters()
     {
-        $getterSetterMapping = [];
+        $getterSetterMapping = new SortedMap('string', GetterSetterPair::class);
 
         $instance = $this->getInstance();
 
@@ -42,7 +42,7 @@ abstract class DtoTest extends TestCase
 
     abstract protected function getInstance();
 
-    private function foundMappings($instance, array &$getterSetterMapping): void
+    private function foundMappings($instance, SortedMap $getterSetterMapping): void
     {
         foreach (ReflectionClass::createFromInstance($instance)->getMethods() as $method) {
             $methodName = $method->getName();
@@ -65,7 +65,7 @@ abstract class DtoTest extends TestCase
         }
     }
 
-    private function getterSettingPair(array &$getterSetterMapping, string $objectName): GetterSetterPair
+    private function getterSettingPair(SortedMap $getterSetterMapping, string $objectName): GetterSetterPair
     {
         if (isset($getterSetterMapping[$objectName])) {
             return $getterSetterMapping[$objectName];
@@ -77,7 +77,7 @@ abstract class DtoTest extends TestCase
         return $getterSettingPair;
     }
 
-    private function assetMappings(array &$getterSetterMapping, $instance): void
+    private function assetMappings(SortedMap $getterSetterMapping, $instance): void
     {
         /** @var GetterSetterPair $pair */
         foreach ($getterSetterMapping as $objectName => $pair) {
