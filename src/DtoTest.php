@@ -84,8 +84,7 @@ abstract class DtoTest extends TestCase
             $fieldName = mb_strtolower($objectName[0]) . mb_substr($objectName, 1);
 
             if ($pair->hasGetterAndSetter()) {
-                $parameterType = $pair->setter()->getParameters()[0]->getType();
-                $newObject = $this->createObject($fieldName, (string) $parameterType);
+                $newObject = $this->createObject($fieldName, (string) $pair->setter()->getParameters()[0]->getType());
 
                 $pair->setter()->invoke($instance, $newObject);
 
