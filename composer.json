@@ -8,6 +8,9 @@
         "phpunit/phpunit": "^8.4",
         "roave/better-reflection": "^3.5"
     },
+    "require-dev": {
+        "phpspec/phpspec": "^6.0"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -28,7 +31,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PHPUnit\\": "tests/PHPUnit"
+            "PHPUnit\\": "tests/PHPUnit",
+            "Spec\\": "tests/Spec"
         }
     },
     "minimum-stability": "stable",

@@ -1,0 +1,7 @@
+suites:
+    project_suite:
+        namespace: DtoTester
+        psr4_prefix: DtoTester
+        spec_prefix: 'Spec'
+        src_path: 'src'
+        spec_path: 'tests'
