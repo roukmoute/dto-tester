@@ -33,11 +33,11 @@ class MapperCollection
         $self->put('string', function () {return ''; });
 
         $self->put(\DateInterval::class, function () {return new \DateInterval(); });
-        $self->put(\DatePeriod::class, function () {return new \DatePeriod(); });
+        $self->put(\DatePeriod::class, function () {return new \DatePeriod('R4/2012-07-01T00:00:00Z/P7D'); });
         $self->put(\DateTime::class, function () {return new \DateTime(); });
         $self->put(\DateTimeImmutable::class, function () {return new \DateTimeImmutable(); });
         $self->put(\DateTimeInterface::class, function () {return new \DateTimeImmutable(); });
-        $self->put(\DateTimeZone::class, function () {return new \DateTimeZone(); });
+        $self->put(\DateTimeZone::class, function () {return new \DateTimeZone('Europe/Paris'); });
 
         return $self;
     }
