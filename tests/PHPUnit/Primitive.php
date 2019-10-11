@@ -21,6 +21,9 @@ class Primitive
     /** @var \DateTimeInterface */
     private $dateTimeInterface;
 
+    /** @var \DateTime */
+    private $dateTime;
+
     /** @var float */
     private $float;
 
@@ -48,6 +51,11 @@ class Primitive
     public function setDateTimeInterface(\DateTimeInterface $dateTimeInterface): void
     {
         $this->dateTimeInterface = $dateTimeInterface;
+    }
+
+    public function getDateTime(): \DateTime
+    {
+        return $this->dateTime;
     }
 
     public function getFloat(): float

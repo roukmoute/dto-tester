@@ -90,6 +90,14 @@ abstract class DtoTest extends TestCase
                 $pair->setter()->invoke($instance, $newObject);
 
                 $this->callGetter($fieldName, $pair->getter(), $instance, $newObject);
+            } elseif ($pair->isImmutable()) {
+                $newObject = $this->createObject($fieldName, (string) $pair->getter()->getReturnType());
+                ReflectionClass::createFromInstance($instance)
+                    ->getProperty($fieldName)
+                    ->setValue($instance, $newObject)
+                ;
+
+                $this->callGetter($fieldName, $pair->getter(), $instance, $newObject);
             }
         }
     }

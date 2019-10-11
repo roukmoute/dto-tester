@@ -38,6 +38,11 @@ class GetterSetterPair
         return $this->getter && $this->setter;
     }
 
+    public function isImmutable(): bool
+    {
+        return $this->getter && !$this->setter;
+    }
+
     public function setSetter(ReflectionMethod $method): void
     {
         $this->setter = $method;
