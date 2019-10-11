@@ -104,7 +104,11 @@ abstract class DtoTest extends TestCase
     private function createObject(string $fieldName, string $class)
     {
         try {
-            return $this->mappers->get($class)();
+            if ($this->mappers->exist($class)) {
+                return $this->mappers->get($class)();
+            }
+
+            return new $class();
         } catch (\Exception $exception) {
             throw new RuntimeException(sprintf('Unable to create objects for field "%s".', $fieldName));
         }

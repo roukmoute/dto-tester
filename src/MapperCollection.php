@@ -51,4 +51,9 @@ class MapperCollection
     {
         return $this->collection[$class];
     }
+
+    public function exist(string $class)
+    {
+        return isset($this->collection[$class]);
+    }
 }

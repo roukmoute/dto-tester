@@ -33,6 +33,9 @@ class Primitive
     /** @var string */
     private $string;
 
+    /** @var primitive */
+    private $primitive;
+
     public function isBool(): bool
     {
         return $this->bool;
@@ -86,5 +89,15 @@ class Primitive
     public function setString(string $string): void
     {
         $this->string = $string;
+    }
+
+    public function getPrimitive(): Primitive
+    {
+        return $this->primitive;
+    }
+
+    public function setPrimitive(Primitive $primitive): void
+    {
+        $this->primitive = $primitive;
     }
 }
