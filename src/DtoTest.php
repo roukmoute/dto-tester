@@ -44,17 +44,23 @@ abstract class DtoTest extends TestCase
 
     private function findMappings($instance, SortedMap $getterSetterMapping): void
     {
-        foreach (ReflectionClass::createFromInstance($instance)->getMethods() as $method) {
+        $reflectionClass = ReflectionClass::createFromInstance($instance);
+
+        foreach ($reflectionClass->getMethods() as $method) {
             $methodName = $method->getName();
             $numberOfParameters = $method->getNumberOfParameters();
+
+            $isGetterWithoutPrefix = $this->isGetterWithoutPrefix($reflectionClass, $methodName);
 
             if ((mb_substr($methodName, 0, 3) === 'get' && $numberOfParameters === 0)
                 || (mb_substr($methodName, 0, 3) === 'set' && $numberOfParameters === 1)
                 || (mb_substr($methodName, 0, 2) === 'is' && $numberOfParameters === 0)
+                || ($isGetterWithoutPrefix && $numberOfParameters === 0)
             ) {
-                $objectName = mb_substr($methodName, mb_substr($methodName, 0, 2) === 'is' ? 2 : 3);
-
-                $getterSettingPair = $this->getterSettingPair($getterSetterMapping, $objectName);
+                $getterSettingPair = $this->getterSettingPair(
+                    $getterSetterMapping,
+                    $this->getObjectName($isGetterWithoutPrefix, $methodName)
+                );
 
                 if (mb_substr($methodName, 0, 3) === 'set') {
                     $getterSettingPair->setSetter($method);
@@ -121,5 +127,19 @@ abstract class DtoTest extends TestCase
         } else {
             $this->assertSame($expected, $getter->invoke($instance), sprintf('"$%s" is different', $fieldName));
         }
+    }
+
+    private function isGetterWithoutPrefix(ReflectionClass $reflectionClass, string $methodName): bool
+    {
+        return (bool) $reflectionClass->getProperty($methodName);
+    }
+
+    private function getObjectName(bool $isGetterWithoutPrefix, string $methodName): string
+    {
+        if ($isGetterWithoutPrefix) {
+            return $methodName;
+        }
+
+        return mb_substr($methodName, mb_substr($methodName, 0, 2) === 'is' ? 2 : 3);
     }
 }

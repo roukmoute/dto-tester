@@ -24,6 +24,9 @@ class Primitive
     /** @var \DateTime */
     private $dateTime;
 
+    /** @var \DateTimeZone */
+    private $dateTimeZone;
+
     /** @var float */
     private $float;
 
@@ -59,6 +62,16 @@ class Primitive
     public function getDateTime(): \DateTime
     {
         return $this->dateTime;
+    }
+
+    public function dateTimeZone(): \DateTimeZone
+    {
+        return $this->dateTimeZone;
+    }
+
+    public function setDateTimeZone(\DateTimeZone $dateTimeZone): void
+    {
+        $this->dateTimeZone = $dateTimeZone;
     }
 
     public function getFloat(): float
