@@ -36,13 +36,13 @@ abstract class DtoTest extends TestCase
 
         $instance = $this->getInstance();
 
-        $this->foundMappings($instance, $getterSetterMapping);
+        $this->findMappings($instance, $getterSetterMapping);
         $this->assetMappings($getterSetterMapping, $instance);
     }
 
     abstract protected function getInstance();
 
-    private function foundMappings($instance, SortedMap $getterSetterMapping): void
+    private function findMappings($instance, SortedMap $getterSetterMapping): void
     {
         foreach (ReflectionClass::createFromInstance($instance)->getMethods() as $method) {
             $methodName = $method->getName();
