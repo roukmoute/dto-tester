@@ -1,0 +1,4 @@
+###> project ###
+/composer.lock
+/vendor/
+###< project ###

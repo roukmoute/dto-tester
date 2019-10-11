@@ -1,0 +1,40 @@
+{
+    "name": "roukmoute/dto-tester",
+    "description": "Add PHPUnit extension for testing DTOs and Transfer Objects",
+    "type": "library",
+    "keywords": ["test", "tests", "testing", "DTO"],
+    "require": {
+        "php": ">=7.1",
+        "phpunit/phpunit": "^8.4",
+        "roave/better-reflection": "^3.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mathias STRASSER",
+            "email": "contact@roukmoute.fr"
+        }
+    ],
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "DtoTester\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PHPUnit\\": "tests/PHPUnit"
+        }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
