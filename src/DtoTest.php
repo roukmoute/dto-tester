@@ -110,7 +110,7 @@ abstract class DtoTest extends TestCase
 
             return new $class();
         } catch (\Exception $exception) {
-            throw new RuntimeException(sprintf('Unable to create objects for field "%s".', $fieldName));
+            throw new RuntimeException(sprintf('Unable to create objects for field "%s".', $fieldName), 0, $exception);
         }
     }
 
