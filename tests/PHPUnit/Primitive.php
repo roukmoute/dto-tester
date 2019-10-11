@@ -19,7 +19,7 @@ class Primitive
     private $bool;
 
     /** @var \DateTimeInterface */
-    private $date;
+    private $dateTimeInterface;
 
     /** @var float */
     private $float;
@@ -40,14 +40,14 @@ class Primitive
         $this->bool = $bool;
     }
 
-    public function getDate(): \DateTimeInterface
+    public function getDateTimeInterface(): \DateTimeInterface
     {
-        return $this->date;
+        return $this->dateTimeInterface;
     }
 
-    public function setDate(\DateTimeInterface $date): void
+    public function setDateTimeInterface(\DateTimeInterface $dateTimeInterface): void
     {
-        $this->date = $date;
+        $this->dateTimeInterface = $dateTimeInterface;
     }
 
     public function getFloat(): float
