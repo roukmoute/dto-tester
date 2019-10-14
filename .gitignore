@@ -2,3 +2,8 @@
 /composer.lock
 /vendor/
 ###< project ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs.cache
+/.php_cs.test.cache
+###< friendsofphp/php-cs-fixer ###
