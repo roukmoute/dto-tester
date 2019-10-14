@@ -90,7 +90,10 @@ abstract class DtoTest extends TestCase
             $fieldName = mb_strtolower($objectName[0]) . mb_substr($objectName, 1);
 
             if ($pair->hasGetterAndSetter()) {
-                $newObject = $this->createObject($fieldName, (string) $pair->setter()->getParameters()[0]->getType());
+                if (($class = (string) $pair->setter()->getParameters()[0]->getType()) === 'self') {
+                    $class = $pair->setter()->getDeclaringClass()->getName();
+                }
+                $newObject = $this->createObject($fieldName, $class);
 
                 $pair->setter()->invoke($instance, $newObject);
 
@@ -98,7 +101,10 @@ abstract class DtoTest extends TestCase
             } elseif ($pair->isImmutable()) {
                 $reflectionProperty = ReflectionClass::createFromInstance($instance)->getProperty($fieldName);
                 if (($newObject = $reflectionProperty->getValue($instance)) === null) {
-                    $newObject = $this->createObject($fieldName, (string) $pair->getter()->getReturnType());
+                    if (($class = (string) $pair->getter()->getReturnType()) === 'self') {
+                        $class = $pair->getter()->getDeclaringClass()->getName();
+                    }
+                    $newObject = $this->createObject($fieldName, $class);
                     $reflectionProperty->setValue($instance, $newObject);
                 }
 

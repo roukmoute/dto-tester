@@ -36,8 +36,11 @@ class Primitive
     /** @var string */
     private $string;
 
-    /** @var primitive */
+    /** @var Primitive */
     private $primitive;
+
+    /** @var self */
+    private $primitiveImmutable;
 
     public function isBool(): bool
     {
@@ -112,5 +115,10 @@ class Primitive
     public function setPrimitive(Primitive $primitive): void
     {
         $this->primitive = $primitive;
+    }
+
+    public function primitiveImmutable(): self
+    {
+        return $this->primitiveImmutable;
     }
 }
