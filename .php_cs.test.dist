@@ -1,6 +1,6 @@
 <?php
 
-$finder = \PhpCsFixer\Finder::create()->notPath('tests/PHPUnit/Primitive.php')->in('tests');
+$finder = \PhpCsFixer\Finder::create()->in('tests')->notPath('PHPUnit/Primitive.php');
 
 return \PhpCsFixer\Config::create()
     ->setRules([
