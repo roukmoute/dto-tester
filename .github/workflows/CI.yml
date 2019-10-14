@@ -5,8 +5,8 @@ on:
   pull_request:
 
 jobs:
-  php-cs-fixer:
-    name: PHP CS Fixer
+  tests:
+    name: Test suite
     runs-on: ubuntu-latest
     container:
       image: php:7.1-cli-alpine
@@ -21,7 +21,11 @@ jobs:
           php -r "unlink('composer-setup.php');"
           php composer global require friendsofphp/php-cs-fixer
           php composer global require pedrotroller/php-cs-custom-fixer
+          php composer install
       - name: Run PHP Coding Standards Fixer tool
         run: |
           php ~/.composer/vendor/bin/php-cs-fixer fix --dry-run --config=.php_cs.dist
           php ~/.composer/vendor/bin/php-cs-fixer fix --dry-run --config=.php_cs.test.dist
+      - name: Run PHPUnit
+        run: |
+          php ./vendor/bin/phpunit
