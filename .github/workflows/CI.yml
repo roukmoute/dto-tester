@@ -32,3 +32,10 @@ jobs:
       - name: Run phpspec
         run: |
           php ./vendor/bin/phpspec run
+      - name: Run PHPUnit with lowest versions of dependencies
+        run: |
+          php composer update --prefer-lowest
+          php ./vendor/bin/phpunit
+      - name: Run phpspec with lowest versions of dependencies
+        run: |
+          php ./vendor/bin/phpspec run
