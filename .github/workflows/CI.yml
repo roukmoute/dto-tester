@@ -29,3 +29,6 @@ jobs:
       - name: Run PHPUnit
         run: |
           php ./vendor/bin/phpunit
+      - name: Run phpspec
+        run: |
+          php ./vendor/bin/phpspec run
