@@ -61,17 +61,8 @@ class SortedMap extends ArrayIterator
         if (($value !== null)
             && (!\function_exists($func = 'is_' . $typeOfValue) || !$func($value))
             && !($value instanceof $typeOfValue)) {
-            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1];
-            throw new \TypeError(
-                sprintf(
-                    'Argument %d passed to %s::%s() must be of the type %s, int given',
-                    $argumentNb,
-                    $backtrace['class'],
-                    $backtrace['function'],
-                    $typeOfValue,
-                    gettype($value)
-                )
-            );
+            $backtrace = debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS)[1];
+            throw new \TypeError(sprintf('Argument %d passed to %s::%s() must be of the type %s, int given', $argumentNb, $backtrace['class'], $backtrace['function'], $typeOfValue, gettype($value)));
         }
     }
 }

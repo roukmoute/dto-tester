@@ -4,11 +4,13 @@
     "type": "library",
     "keywords": ["test", "tests", "testing", "DTO"],
     "require": {
-        "php": ">=7.2",
-        "phpunit/phpunit": "^8.4",
-        "roave/better-reflection": "^3.5"
+        "php": "^7.2",
+        "phpunit/phpunit": "^8.4||^9.1",
+        "roave/better-reflection": "^3.5||^4.8"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "pedrotroller/php-cs-custom-fixer": "^2.23",
         "phpspec/phpspec": "^6.0"
     },
     "license": "MIT",
