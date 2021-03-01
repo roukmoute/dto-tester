@@ -42,6 +42,9 @@ class Primitive
     /** @var self */
     private $primitiveImmutable;
 
+    /** @var string */
+    private $string2;
+
     public function isBool(): bool
     {
         return $this->bool;
@@ -120,5 +123,15 @@ class Primitive
     public function primitiveImmutable(): self
     {
         return $this->primitiveImmutable;
+    }
+
+    public function string2(): string
+    {
+        return $this->string2;
+    }
+
+    public function setString2(string $string): void
+    {
+        $this->string2 = $string;
     }
 }
