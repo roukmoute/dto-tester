@@ -110,12 +110,12 @@ class Primitive
         $this->string = $string;
     }
 
-    public function getPrimitive(): Primitive
+    public function getPrimitive(): self
     {
         return $this->primitive;
     }
 
-    public function setPrimitive(Primitive $primitive): void
+    public function setPrimitive(self $primitive): void
     {
         $this->primitive = $primitive;
     }
