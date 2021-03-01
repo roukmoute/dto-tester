@@ -1,5 +1,7 @@
 # DTO Tester
 
+[![CI](https://github.com/roukmoute/dto-tester/actions/workflows/CI.yml/badge.svg)](https://github.com/roukmoute/dto-tester/actions/workflows/CI.yml)
+
 Automatically PHPUnit Test DTO and Transfer Objects.
 
 Original idea: [Automatically JUnit Test DTO and Transfer Objects](https://objectpartners.com/2016/02/16/automatically-junit-test-dto-and-transfer-objects/)  
