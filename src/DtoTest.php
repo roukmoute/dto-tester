@@ -37,7 +37,7 @@ abstract class DtoTest extends TestCase
         $instance = $this->getInstance();
 
         $this->findMappings($instance, $getterSetterMapping);
-        $this->assetMappings($getterSetterMapping, $instance);
+        $this->assertMappings($getterSetterMapping, $instance);
     }
 
     abstract protected function getInstance();
@@ -83,7 +83,7 @@ abstract class DtoTest extends TestCase
         return $getterSettingPair;
     }
 
-    private function assetMappings(SortedMap $getterSetterMapping, $instance): void
+    private function assertMappings(SortedMap $getterSetterMapping, $instance): void
     {
         /** @var GetterSetterPair $pair */
         foreach ($getterSetterMapping as $objectName => $pair) {
