@@ -17,6 +17,7 @@ use PHPUnit\Framework\TestCase;
 use Roave\BetterReflection\Reflection\ReflectionClass;
 use Roave\BetterReflection\Reflection\ReflectionMethod;
 use RuntimeException;
+use function lcfirst;
 
 abstract class DtoTest extends TestCase
 {
@@ -146,6 +147,6 @@ abstract class DtoTest extends TestCase
             return $methodName;
         }
 
-        return mb_substr($methodName, mb_substr($methodName, 0, 2) === 'is' ? 2 : 3);
+        return lcfirst(mb_substr($methodName, mb_substr($methodName, 0, 2) === 'is' ? 2 : 3));
     }
 }
